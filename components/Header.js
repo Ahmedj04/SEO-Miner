@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const navLinks = [
     { href: '/aiwriter', label: 'AI Writer', featured: true },
+    { href: '/blog', label: 'Blog' },
     { href: '/#how-it-works', label: 'How it Works' },
     { href: '/#features', label: 'Features' },
     { href: '/#about', label: 'About' },

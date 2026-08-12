@@ -19,6 +19,12 @@ export default function Footer() {
                     <div className="flex flex-col gap-2 sm:items-end">
                         <div className="flex gap-4">
                             <Link
+                                href="/blog"
+                                className="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--foreground)]"
+                            >
+                                Blog
+                            </Link>
+                            <Link
                                 href="/privacy"
                                 className="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--foreground)]"
                             >
