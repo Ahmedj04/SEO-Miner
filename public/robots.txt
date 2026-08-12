@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://seominer.vercel.app
+
+# Sitemaps
+Sitemap: https://seominer.vercel.app/sitemap.xml
