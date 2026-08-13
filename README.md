@@ -2,7 +2,7 @@
 
 SEO Miner is a modern SEO research workspace for extracting keywords from public pages, comparing competitor language, finding keyword gaps, and turning research into draft content with an AI writer.
 
-Live demo: https://seokeywordminer.vercel.app
+Live demo: https://seominer.vercel.app
 
 ## Features
 
