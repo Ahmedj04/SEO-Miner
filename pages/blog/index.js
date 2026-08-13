@@ -17,6 +17,25 @@ const posts = [
         readTime: '10 min read',
         date: 'August 2026',
     },
+    {
+        slug: 'low-competition-keywords',
+        category: 'SEO Opportunities',
+        title: 'How to Find Low-Competition Keywords for SEO',
+        description:
+            'Learn how to find low-competition keywords, evaluate keyword difficulty, discover long-tail opportunities, analyze search intent, and build a smarter SEO strategy.',
+        readTime: '10 min read',
+        date: 'August 2026',
+    },
+    {
+        slug: 'keyword-gap-analysis',
+        category: 'Competitor SEO',
+        title: 'What Is Keyword Gap Analysis? How to Find Keywords Your Competitors Rank For',
+        description:
+            'Discover how keyword gap analysis can uncover keywords your competitors rank for but your website does not. Learn how to analyze competitor keywords and find actionable SEO opportunities.',
+        readTime: '10 min read',
+        date: 'August 2026',
+    },
+    
 ];
 
 export default function Blog() {

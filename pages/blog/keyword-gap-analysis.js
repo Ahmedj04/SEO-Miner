@@ -12,6 +12,7 @@ import {
     Sparkles,
     Target,
     TrendingUp,
+    X,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -19,73 +20,89 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const tocItems = [
-    { id: 'what-is-keyword-research', label: 'What Is Keyword Research?' },
-    { id: 'why-keyword-research-matters', label: 'Why It Matters for SEO' },
-    { id: 'research-vs-analysis', label: 'Research vs. Analysis' },
-    { id: 'keyword-research-process', label: 'The Keyword Research Process' },
-    { id: 'seed-keywords', label: 'Start With Seed Keywords' },
-    { id: 'expand-keywords', label: 'Expand Your Keyword List' },
-    { id: 'search-volume', label: 'Check Search Volume' },
-    { id: 'keyword-difficulty', label: 'Analyze Keyword Difficulty' },
-    { id: 'long-tail-keywords', label: 'Find Long-Tail Keywords' },
-    { id: 'search-intent', label: 'Understand Search Intent' },
-    { id: 'competitor-research', label: 'Analyze Competitors' },
-    { id: 'keyword-clustering', label: 'Group Related Keywords' },
+    { id: 'what-is-keyword-gap', label: 'What Is Keyword Gap Analysis?' },
+    { id: 'why-keyword-gap-matters', label: 'Why Keyword Gaps Matter' },
+    { id: 'keyword-gap-vs-content-gap', label: 'Keyword Gap vs Content Gap' },
+    { id: 'how-keyword-gap-works', label: 'How Keyword Gap Analysis Works' },
+    { id: 'find-competitors', label: 'Find Your SEO Competitors' },
+    { id: 'collect-competitor-keywords', label: 'Find Competitor Keywords' },
+    { id: 'compare-keywords', label: 'Compare Keyword Rankings' },
+    { id: 'evaluate-opportunities', label: 'Evaluate Opportunities' },
+    { id: 'search-intent', label: 'Analyze Search Intent' },
+    { id: 'prioritize-gaps', label: 'Prioritize Keyword Gaps' },
     { id: 'common-mistakes', label: 'Common Mistakes' },
+    { id: 'seo-miner', label: 'Find Keyword Gaps With SEO Miner' },
     { id: 'final-thoughts', label: 'Final Thoughts' },
 ];
 
 const keywordChips = [
-    'keyword research',
-    'SEO keyword research',
-    'long-tail keywords',
-    'keyword difficulty',
-    'search intent',
+    'keyword gap analysis',
+    'competitor keywords',
+    'SEO competitor analysis',
+    'content gap',
+    'keyword opportunities',
 ];
 
-const steps = [
+const processSteps = [
     {
         number: '01',
-        id: 'seed-keywords',
-        title: 'Start With Seed Keywords',
-        text: `A seed keyword is a broad term that describes your business, product, service, or topic. For an SEO website, seed keywords could include SEO, keyword research, SEO tools, content marketing, technical SEO, and link building.`,
-        items: ['SEO', 'keyword research', 'SEO tools', 'content marketing'],
+        id: 'find-competitors',
+        title: 'Find Your SEO Competitors',
+        description:
+            'Start by identifying websites that compete with you in organic search. Your SEO competitors may not always be your direct business competitors.',
+        items: [
+            'Search competitors',
+            'Organic competitors',
+            'Top-ranking websites',
+        ],
     },
     {
         number: '02',
-        id: 'expand-keywords',
-        title: 'Expand Your Keyword List',
-        text: `Once you have your seed keywords, expand them into more specific search queries. Look for related keywords, question keywords, long-tail keywords, commercial keywords, informational keywords, comparison searches, and problem-based searches.`,
+        id: 'collect-competitor-keywords',
+        title: 'Find Competitor Keywords',
+        description:
+            'Analyze the keywords your competitors rank for. Look for topics, queries, long-tail keywords, and commercial searches that are relevant to your website.',
         items: [
-            'Related keywords',
-            'Question keywords',
+            'Organic keywords',
             'Long-tail keywords',
             'Commercial keywords',
         ],
     },
     {
         number: '03',
-        id: 'search-volume',
-        title: 'Check Search Volume',
-        text: `Search volume estimates how frequently a keyword is searched over a particular period. It can help you estimate demand, but search volume should never be the only factor you use when selecting a keyword.`,
-        items: ['Demand', 'Relevance', 'Competition', 'Business value'],
+        id: 'compare-keywords',
+        title: 'Compare Keyword Rankings',
+        description:
+            'Compare your keyword profile with your competitors. Look for keywords where competitors rank but your website has little or no visibility.',
+        items: [
+            'Missing keywords',
+            'Shared keywords',
+            'Competitor rankings',
+        ],
     },
     {
         number: '04',
-        id: 'keyword-difficulty',
-        title: 'Analyze Keyword Difficulty',
-        text: `Keyword difficulty is an estimate of how difficult it may be to rank for a particular keyword. If the search results are dominated by large established websites, newer websites may want to prioritize more specific and less competitive keywords.`,
-        items: ['Competition', 'Domain authority', 'Existing results', 'Content quality'],
+        id: 'evaluate-opportunities',
+        title: 'Evaluate the Opportunities',
+        description:
+            'Not every keyword gap is worth pursuing. Evaluate search volume, keyword difficulty, relevance, search intent, and potential business value.',
+        items: [
+            'Search volume',
+            'Keyword difficulty',
+            'Search intent',
+            'Business value',
+        ],
     },
     {
         number: '05',
-        id: 'long-tail-keywords',
-        title: 'Find Long-Tail Keywords',
-        text: `Long-tail keywords are generally more specific search phrases, often containing several words. They can reveal a clearer user need and help you discover highly targeted content opportunities.`,
+        id: 'prioritize-gaps',
+        title: 'Prioritize Your Keyword Gaps',
+        description:
+            'Turn your keyword gap report into an actionable SEO strategy. Prioritize keywords that combine relevance, realistic competition, and valuable search intent.',
         items: [
-            'best keyword research tool for beginners',
-            'how to find low competition keywords',
-            'keyword research for a new website',
+            'High-value gaps',
+            'Quick wins',
+            'Content opportunities',
         ],
     },
 ];
@@ -93,26 +110,30 @@ const steps = [
 const intentCards = [
     {
         label: 'Informational',
-        example: 'what is keyword research',
-        description: 'The searcher wants to learn something.',
+        example: 'how to do keyword research',
+        description:
+            'Useful for educational content, guides, tutorials, and awareness.',
     },
     {
         label: 'Commercial',
         example: 'best keyword research tools',
-        description: 'The searcher is comparing available options.',
+        description:
+            'Useful for comparison pages, product research, and buying decisions.',
     },
     {
         label: 'Transactional',
-        example: 'keyword research tool pricing',
-        description: 'The searcher is ready to take action.',
+        example: 'keyword research tool',
+        description:
+            'Often indicates stronger action or conversion potential.',
     },
     {
-        label: 'Navigational',
-        example: 'SEO Miner',
-        description: 'The searcher wants to reach a specific destination.',
+        label: 'Long-tail',
+        example: 'keyword gap analysis for small websites',
+        description:
+            'More specific searches can reveal highly targeted opportunities.',
     },
 ];
-
+    
 // function SectionNumber({ number }) {
 //     return (
 //         <div
@@ -142,7 +163,7 @@ function SectionNumber({ number }) {
             </span>
 
             <span
-                className="h-px flex-1 max-w-[80px]"
+                className="h-px max-w-[80px] flex-1"
                 style={{
                     background: 'var(--accent)',
                     opacity: 0.35,
@@ -152,11 +173,10 @@ function SectionNumber({ number }) {
     );
 }
 
-
-function KeywordGraphic() {
+function CompetitorGraphic() {
     return (
         <div
-            className="relative mx-auto mt-12 h-[360px] w-full max-w-5xl overflow-hidden rounded-3xl border sm:h-[420px]"
+            className="relative mx-auto mt-12 h-[380px] w-full max-w-5xl overflow-hidden rounded-3xl border sm:h-[440px]"
             style={{
                 borderColor: 'var(--border)',
                 background:
@@ -167,114 +187,173 @@ function KeywordGraphic() {
             <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
 
             <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
                 style={{
                     background:
                         'radial-gradient(circle, #2ea870 0%, transparent 70%)',
                 }}
             />
 
-            {/* Connecting lines */}
             <div
-                className="absolute left-1/2 top-1/2 h-px w-[65%] -translate-x-1/2"
+                className="absolute left-1/2 top-1/2 z-20 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-2xl border shadow-2xl sm:h-32 sm:w-32"
                 style={{
-                    background:
-                        'linear-gradient(90deg, transparent, var(--accent), transparent)',
-                    opacity: 0.3,
+                    borderColor: 'var(--accent)',
+                    background: 'var(--foreground)',
+                    color: 'var(--background)',
                 }}
-            />
+            >
+                <Target className="mb-1 h-5 w-5" />
+                <span className="text-[10px] font-semibold uppercase tracking-widest">
+                    Keyword
+                </span>
+                <span className="mt-1 text-xs font-bold">
+                    Gap
+                </span>
+            </div>
 
-            <div
-                className="absolute left-1/2 top-1/2 h-[65%] w-px -translate-x-1/2 -translate-y-1/2"
-                style={{
-                    background:
-                        'linear-gradient(180deg, transparent, var(--accent), transparent)',
-                    opacity: 0.3,
-                }}
-            />
-
-            {/* Center */}
+            {/* Left competitor panel */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7 }}
-                className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="absolute left-[5%] top-1/2 w-[36%] -translate-y-1/2 sm:left-[10%] sm:w-[30%]"
             >
                 <div
-                    className="flex h-28 w-28 flex-col items-center justify-center rounded-2xl border shadow-2xl sm:h-36 sm:w-36"
+                    className="rounded-2xl border p-4 sm:p-6"
                     style={{
-                        borderColor: 'var(--accent)',
-                        background: 'var(--foreground)',
-                        color: 'var(--background)',
+                        borderColor: 'var(--border)',
+                        background: 'var(--surface)',
                     }}
                 >
-                    <Search className="mb-2 h-6 w-6" />
-                    <span className="text-xs font-semibold uppercase tracking-widest">
-                        Research
-                    </span>
-                    <span className="mt-1 text-sm font-bold">
-                        Keywords
-                    </span>
+                    <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold">
+                            Competitor
+                        </span>
+
+                        <TrendingUp
+                            className="h-4 w-4"
+                            style={{ color: 'var(--accent)' }}
+                        />
+                    </div>
+
+                    <div className="mt-5 space-y-3">
+                        {[
+                            'keyword research',
+                            'SEO tools',
+                            'keyword analysis',
+                        ].map((item) => (
+                            <div
+                                key={item}
+                                className="rounded-lg border px-3 py-2 text-[10px] sm:text-xs"
+                                style={{
+                                    borderColor: 'var(--border)',
+                                    background: 'var(--surface-2)',
+                                }}
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </motion.div>
 
-            {/* Keyword nodes */}
-            {[
-                {
-                    text: 'Search Volume',
-                    className: 'left-[6%] top-[18%] sm:left-[13%]',
-                },
-                {
-                    text: 'Search Intent',
-                    className: 'right-[6%] top-[18%] sm:right-[13%]',
-                },
-                {
-                    text: 'Competition',
-                    className: 'bottom-[18%] left-[6%] sm:left-[13%]',
-                },
-                {
-                    text: 'Content Ideas',
-                    className: 'bottom-[18%] right-[6%] sm:right-[13%]',
-                },
-            ].map((item, index) => (
-                <motion.div
-                    key={item.text}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.5,
-                        delay: 0.15 + index * 0.1,
+            {/* Right your website panel */}
+            <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="absolute right-[5%] top-1/2 w-[36%] -translate-y-1/2 sm:right-[10%] sm:w-[30%]"
+            >
+                <div
+                    className="rounded-2xl border p-4 sm:p-6"
+                    style={{
+                        borderColor: 'var(--border)',
+                        background: 'var(--surface)',
                     }}
-                    className={`absolute ${item.className}`}
                 >
-                    <div
-                        className="rounded-xl border px-3 py-2 text-xs font-semibold shadow-lg sm:px-5 sm:py-3 sm:text-sm"
-                        style={{
-                            borderColor: 'var(--border)',
-                            background: 'var(--surface)',
-                            color: 'var(--foreground)',
-                        }}
-                    >
-                        <span
-                            className="mr-2 inline-block h-1.5 w-1.5 rounded-full"
-                            style={{ background: 'var(--accent)' }}
+                    <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold">
+                            Your Website
+                        </span>
+
+                        <Search
+                            className="h-4 w-4"
+                            style={{ color: 'var(--text-muted)' }}
                         />
-                        {item.text}
                     </div>
-                </motion.div>
-            ))}
+
+                    <div className="mt-5 space-y-3">
+                        <div
+                            className="rounded-lg border px-3 py-2 text-[10px] opacity-60 sm:text-xs"
+                            style={{
+                                borderColor: 'var(--border)',
+                            }}
+                        >
+                            SEO basics
+                        </div>
+
+                        <div
+                            className="flex items-center justify-between rounded-lg border px-3 py-2 text-[10px] sm:text-xs"
+                            style={{
+                                borderColor: 'var(--accent)',
+                                background: 'var(--accent-light)',
+                                color: 'var(--accent)',
+                            }}
+                        >
+                            <span>keyword gap</span>
+                            <X className="h-3 w-3" />
+                        </div>
+
+                        <div
+                            className="rounded-lg border px-3 py-2 text-[10px] opacity-60 sm:text-xs"
+                            style={{
+                                borderColor: 'var(--border)',
+                            }}
+                        >
+                            content strategy
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
 
             <div
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.25em] sm:text-xs"
+                className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.25em] sm:text-xs"
                 style={{ color: 'var(--text-muted)' }}
             >
-                Discover · Analyze · Prioritize · Create
+                Compare · Discover · Prioritize
             </div>
         </div>
     );
 }
 
-function KeywordDashboard() {
+function GapDashboard() {
+    const rows = [
+        {
+            keyword: 'keyword research tool',
+            competitor: 'Position 4',
+            yours: 'Not ranking',
+            type: 'Missing',
+        },
+        {
+            keyword: 'keyword analysis',
+            competitor: 'Position 7',
+            yours: 'Position 43',
+            type: 'Improve',
+        },
+        {
+            keyword: 'SEO keyword research',
+            competitor: 'Position 9',
+            yours: 'Not ranking',
+            type: 'Missing',
+        },
+        {
+            keyword: 'long-tail keywords',
+            competitor: 'Position 12',
+            yours: 'Position 31',
+            type: 'Improve',
+        },
+    ];
+
     return (
         <div
             className="my-12 overflow-hidden rounded-2xl border"
@@ -284,7 +363,7 @@ function KeywordDashboard() {
             }}
         >
             <div
-                className="flex items-center justify-between border-b px-5 py-4"
+                className="flex flex-col gap-4 border-b p-5 sm:flex-row sm:items-center sm:justify-between"
                 style={{ borderColor: 'var(--border)' }}
             >
                 <div className="flex items-center gap-3">
@@ -300,128 +379,105 @@ function KeywordDashboard() {
 
                     <div>
                         <p className="text-sm font-semibold">
-                            Keyword Opportunity
+                            Keyword Gap
                         </p>
+
                         <p
                             className="text-xs"
-                            style={{ color: 'var(--text-muted)' }}
+                            style={{
+                                color: 'var(--text-muted)',
+                            }}
                         >
-                            Example analysis
+                            Competitor comparison
                         </p>
                     </div>
                 </div>
 
                 <div
-                    className="hidden rounded-full border px-3 py-1 text-xs font-medium sm:block"
+                    className="inline-flex w-fit rounded-full border px-3 py-1 text-xs font-medium"
                     style={{
                         borderColor: 'var(--border)',
                         color: 'var(--text-muted)',
                     }}
                 >
-                    SEO Research
+                    4 opportunities
                 </div>
             </div>
 
-            <div className="grid gap-0 lg:grid-cols-[1.3fr_0.7fr]">
-                <div className="p-5 sm:p-7">
-                    <p
-                        className="text-xs font-semibold uppercase tracking-widest"
-                        style={{ color: 'var(--accent)' }}
+            <div className="overflow-x-auto">
+                <div className="min-w-[650px]">
+                    <div
+                        className="grid grid-cols-[1.5fr_1fr_1fr_100px] gap-4 border-b px-5 py-3 text-[10px] font-bold uppercase tracking-widest"
+                        style={{
+                            borderColor: 'var(--border)',
+                            color: 'var(--text-muted)',
+                        }}
                     >
-                        Target keyword
-                    </p>
+                        <span>Keyword</span>
+                        <span>Competitor</span>
+                        <span>Your site</span>
+                        <span>Status</span>
+                    </div>
 
-                    <div className="mt-2 flex items-center gap-3">
-                        <span className="text-2xl font-bold">
-                            keyword research
-                        </span>
-                        <span
-                            className="rounded-full px-2.5 py-1 text-[10px] font-semibold"
+                    {rows.map((row) => (
+                        <div
+                            key={row.keyword}
+                            className="grid grid-cols-[1.5fr_1fr_1fr_100px] gap-4 border-b px-5 py-4 last:border-b-0"
                             style={{
-                                background: 'var(--accent-light)',
-                                color: 'var(--accent)',
+                                borderColor: 'var(--border)',
                             }}
                         >
-                            Opportunity
-                        </span>
-                    </div>
+                            <span className="text-xs font-semibold">
+                                {row.keyword}
+                            </span>
 
-                    <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                        {[
-                            ['Volume', '12.1K'],
-                            ['Difficulty', '42'],
-                            ['Intent', 'Info'],
-                            ['Trend', 'Growing'],
-                        ].map(([label, value]) => (
-                            <div
-                                key={label}
-                                className="rounded-xl border p-4"
+                            <span
+                                className="text-xs"
                                 style={{
-                                    borderColor: 'var(--border)',
-                                    background: 'var(--surface)',
+                                    color: 'var(--text-muted)',
                                 }}
                             >
-                                <p
-                                    className="text-[10px] font-semibold uppercase tracking-widest"
-                                    style={{ color: 'var(--text-muted)' }}
-                                >
-                                    {label}
-                                </p>
-                                <p className="mt-2 text-sm font-bold">
-                                    {value}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                                {row.competitor}
+                            </span>
 
-                <div
-                    className="border-t p-5 lg:border-l lg:border-t-0 sm:p-7"
-                    style={{ borderColor: 'var(--border)' }}
-                >
-                    <p className="text-sm font-semibold">
-                        Related opportunities
-                    </p>
-
-                    <div className="mt-4 space-y-3">
-                        {[
-                            ['SEO keyword research', '2.9K'],
-                            ['keyword research tool', '4.4K'],
-                            ['keyword analysis', '1.9K'],
-                            ['long-tail keywords', '2.4K'],
-                        ].map(([keyword, volume]) => (
-                            <div
-                                key={keyword}
-                                className="flex items-center justify-between gap-3"
+                            <span
+                                className="text-xs"
+                                style={{
+                                    color:
+                                        row.yours === 'Not ranking'
+                                            ? 'var(--text-muted)'
+                                            : 'var(--foreground)',
+                                }}
                             >
-                                <span
-                                    className="text-xs"
-                                    style={{
-                                        color: 'var(--text-secondary)',
-                                    }}
-                                >
-                                    {keyword}
-                                </span>
-                                <span
-                                    className="text-xs font-semibold"
-                                    style={{
-                                        color: 'var(--accent)',
-                                    }}
-                                >
-                                    {volume}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+                                {row.yours}
+                            </span>
+
+                            <span
+                                className="w-fit rounded-full px-2 py-1 text-[10px] font-semibold"
+                                style={{
+                                    background:
+                                        row.type === 'Missing'
+                                            ? 'var(--accent-light)'
+                                            : 'var(--surface)',
+                                    color:
+                                        row.type === 'Missing'
+                                            ? 'var(--accent)'
+                                            : 'var(--text-muted)',
+                                }}
+                            >
+                                {row.type}
+                            </span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
     );
 }
 
-export default function KeywordResearchForSEO() {
+export default function KeywordGapAnalysis() {
     const [activeSection, setActiveSection] = useState(
-        'what-is-keyword-research'
+        'what-is-keyword-gap'
     );
 
     useEffect(() => {
@@ -460,33 +516,33 @@ export default function KeywordResearchForSEO() {
         <>
             <Head>
                 <title>
-                    How to Do Keyword Research for SEO: A Complete Guide |
-                    SEO Miner
+                    What Is Keyword Gap Analysis? How to Find Keywords Your
+                    Competitors Rank For | SEO Miner
                 </title>
 
                 <meta
                     name="description"
-                    content="Learn how to do keyword research for SEO, find long-tail keywords, analyze search intent, evaluate keyword difficulty, research competitors, and build an effective keyword strategy."
+                    content="Learn what keyword gap analysis is and how to find keywords your competitors rank for. Discover competitor keywords, SEO opportunities, content gaps, search intent, and actionable keyword strategies."
                 />
 
                 <meta
                     name="keywords"
-                    content="keyword research, keyword research for SEO, SEO keyword research, keyword research tools, keyword analysis, long-tail keywords, keyword difficulty, search intent, competitor keyword research, keyword gap analysis, keyword clustering, SEO content strategy"
+                    content="keyword gap analysis, keyword gap, competitor keyword analysis, competitor keyword research, competitor keywords, keywords your competitors rank for, SEO competitor analysis, competitor SEO analysis, content gap analysis, keyword research, SEO keyword research, keyword opportunities, keyword difficulty, search volume, search intent, long-tail keywords, competitor analysis tool, keyword gap tool"
                 />
 
                 <link
                     rel="canonical"
-                    href="https://seominer.vercel.app/blog/keyword-research-for-seo"
+                    href="https://seominer.vercel.app/blog/keyword-gap-analysis"
                 />
 
                 <meta
                     property="og:title"
-                    content="How to Do Keyword Research for SEO: A Complete Guide"
+                    content="What Is Keyword Gap Analysis? How to Find Keywords Your Competitors Rank For"
                 />
 
                 <meta
                     property="og:description"
-                    content="Learn how to find valuable keywords, understand search intent, analyze competition, and build an effective SEO keyword strategy."
+                    content="Discover how keyword gap analysis can uncover keywords your competitors rank for but your website doesn't."
                 />
 
                 <meta property="og:type" content="article" />
@@ -514,19 +570,13 @@ export default function KeywordResearchForSEO() {
                             }}
                         />
 
-                        <div
-                            className="pointer-events-none absolute -bottom-60 -left-40 h-[500px] w-[500px] rounded-full opacity-10"
-                            style={{
-                                background:
-                                    'radial-gradient(circle, #1a7a52 0%, transparent 70%)',
-                            }}
-                        />
-
                         <div className="relative mx-auto max-w-6xl">
                             <Link
                                 href="/blog"
                                 className="mb-10 inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[var(--accent)]"
-                                style={{ color: 'var(--text-muted)' }}
+                                style={{
+                                    color: 'var(--text-muted)',
+                                }}
                             >
                                 <ArrowLeft className="h-4 w-4" />
                                 Back to Blog
@@ -542,8 +592,8 @@ export default function KeywordResearchForSEO() {
                                             color: 'var(--accent)',
                                         }}
                                     >
-                                        <Sparkles className="h-3.5 w-3.5" />
-                                        SEO Guide
+                                        <Target className="h-3.5 w-3.5" />
+                                        Competitor SEO
                                     </span>
 
                                     <span
@@ -573,14 +623,15 @@ export default function KeywordResearchForSEO() {
                                             'Instrument Serif, Georgia, serif',
                                     }}
                                 >
-                                    How to Do Keyword Research{' '}
+                                    What Is Keyword Gap Analysis?{' '}
                                     <span
                                         className="italic"
                                         style={{
                                             color: 'var(--accent)',
                                         }}
                                     >
-                                        for SEO
+                                        Find the Keywords Your Competitors
+                                        Rank For
                                     </span>
                                 </h1>
 
@@ -591,11 +642,12 @@ export default function KeywordResearchForSEO() {
                                             color: 'var(--text-muted)',
                                         }}
                                     >
-                                        A complete guide to finding valuable
-                                        keywords, understanding search intent,
-                                        analyzing competition, discovering
-                                        long-tail opportunities, and building a
-                                        smarter SEO content strategy.
+                                        Discover the keywords your competitors
+                                        rank for but your website doesn't.
+                                        Learn how to identify keyword gaps,
+                                        evaluate opportunities, and turn
+                                        competitor research into an actionable
+                                        SEO strategy.
                                     </p>
 
                                     <div className="flex flex-wrap gap-2">
@@ -619,11 +671,11 @@ export default function KeywordResearchForSEO() {
                                 </div>
                             </div>
 
-                            <KeywordGraphic />
+                            <CompetitorGraphic />
                         </div>
                     </section>
 
-                    {/* CONTENT AREA */}
+                    {/* CONTENT */}
                     <section className="px-4 py-24 sm:px-8">
                         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
                             {/* TOC */}
@@ -670,7 +722,6 @@ export default function KeywordResearchForSEO() {
                                 </div>
                             </aside>
 
-                            {/* ARTICLE */}
                             <article className="min-w-0">
                                 {/* Mobile TOC */}
                                 <details
@@ -717,17 +768,19 @@ export default function KeywordResearchForSEO() {
                                             style={{
                                                 background:
                                                     'var(--foreground)',
-                                                color: 'var(--background)',
+                                                color:
+                                                    'var(--background)',
                                             }}
                                         >
-                                            <Target className="h-5 w-5" />
+                                            <Search className="h-5 w-5" />
                                         </div>
 
                                         <div>
                                             <p
                                                 className="text-xs font-bold uppercase tracking-widest"
                                                 style={{
-                                                    color: 'var(--accent)',
+                                                    color:
+                                                        'var(--accent)',
                                                 }}
                                             >
                                                 The short version
@@ -740,80 +793,153 @@ export default function KeywordResearchForSEO() {
                                                         'var(--text-secondary)',
                                                 }}
                                             >
-                                                Good keyword research isn't
-                                                about collecting hundreds of
-                                                keywords. It's about finding
-                                                the search terms that connect
-                                                your audience's needs with what
-                                                your website can genuinely
-                                                provide.
+                                                A keyword gap is an opportunity
+                                                hiding between your website and
+                                                your competitors. By comparing
+                                                keyword rankings, you can
+                                                discover relevant searches where
+                                                competitors have visibility and
+                                                your website doesn't.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* What is keyword research */}
+                                {/* What is */}
                                 <section
-                                    id="what-is-keyword-research"
+                                    id="what-is-keyword-gap"
                                     className="relative scroll-mt-28"
                                 >
                                     <SectionNumber number="01" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        What Is Keyword Research?
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        What Is Keyword Gap Analysis?
                                     </h2>
 
                                     <div className="mt-6 space-y-5">
                                         <p>
-                                            <strong>Keyword research</strong>{' '}
-                                            is the process of discovering and
-                                            analyzing the words and phrases
-                                            people enter into search engines
-                                            such as Google when looking for
-                                            information, products, services,
-                                            or solutions.
+                                            <strong>
+                                                Keyword gap analysis
+                                            </strong>{' '}
+                                            is an SEO research process that
+                                            compares the keywords your website
+                                            ranks for against the keywords your
+                                            competitors rank for.
                                         </p>
 
                                         <p>
-                                            For example, someone interested in
-                                            improving their website's
-                                            visibility might search for
+                                            The goal is to discover{' '}
                                             <strong>
-                                                {' '}
-                                                SEO keyword research
-                                            </strong>
-                                            ,{' '}
-                                            <strong>
-                                                keyword research tools
-                                            </strong>
-                                            ,{' '}
-                                            <strong>
-                                                how to do keyword research
-                                            </strong>
-                                            , or{' '}
-                                            <strong>
-                                                long-tail keywords
-                                            </strong>
-                                            .
+                                                keywords your competitors rank
+                                                for
+                                            </strong>{' '}
+                                            but your website doesn't, or
+                                            keywords where your competitors
+                                            have significantly stronger
+                                            rankings.
                                         </p>
 
                                         <p>
-                                            These searches reveal what people
-                                            want to know and what type of
-                                            content they expect to find.
+                                            These differences are called
+                                            <strong> keyword gaps</strong>.
+                                            They can reveal opportunities for
+                                            new content, existing-page
+                                            optimization, landing pages, and
+                                            broader SEO strategies.
                                         </p>
                                     </div>
 
-                                    <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                                    <div className="mt-8 grid gap-3 sm:grid-cols-3">
                                         {[
-                                            'What your audience searches for',
-                                            'How competitive a topic is',
-                                            'What search intent lies behind a query',
-                                            'Where content opportunities exist',
-                                        ].map((item) => (
+                                            [
+                                                'Missing',
+                                                'Competitor ranks. You do not.',
+                                            ],
+                                            [
+                                                'Improve',
+                                                'Both rank, but your competitor is stronger.',
+                                            ],
+                                            [
+                                                'Win',
+                                                'You already outperform them.',
+                                            ],
+                                        ].map(([title, description]) => (
                                             <div
-                                                key={item}
-                                                className="flex gap-3 rounded-xl border p-4"
+                                                key={title}
+                                                className="rounded-2xl border p-5"
+                                                style={{
+                                                    borderColor:
+                                                        'var(--border)',
+                                                    background:
+                                                        'var(--surface)',
+                                                }}
+                                            >
+                                                <p
+                                                    className="text-xs font-bold uppercase tracking-widest"
+                                                    style={{
+                                                        color:
+                                                            'var(--accent)',
+                                                    }}
+                                                >
+                                                    {title}
+                                                </p>
+
+                                                <p
+                                                    className="mt-3 text-sm leading-relaxed"
+                                                    style={{
+                                                        color:
+                                                            'var(--text-muted)',
+                                                    }}
+                                                >
+                                                    {description}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* Why */}
+                                <section
+                                    id="why-keyword-gap-matters"
+                                    className="relative mt-20 scroll-mt-28"
+                                >
+                                    <SectionNumber number="02" />
+
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Why Does Keyword Gap Analysis Matter?
+                                    </h2>
+
+                                    <p className="mt-6">
+                                        Your competitors have already spent
+                                        time researching topics, creating
+                                        content, and earning rankings. Their
+                                        organic keyword data can therefore
+                                        provide valuable clues about what works
+                                        in your market.
+                                    </p>
+
+                                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                                        {[
+                                            [
+                                                'Discover missed opportunities',
+                                                'Find relevant keywords that are already generating visibility for competitors.',
+                                            ],
+                                            [
+                                                'Improve your content strategy',
+                                                'Use competitor keywords to identify topics worth covering on your own website.',
+                                            ],
+                                            [
+                                                'Find quick wins',
+                                                'Identify keywords where your website already ranks but could potentially improve.',
+                                            ],
+                                            [
+                                                'Understand your market',
+                                                'See which topics and search terms dominate your competitive landscape.',
+                                            ],
+                                        ].map(([title, text]) => (
+                                            <div
+                                                key={title}
+                                                className="rounded-2xl border p-6"
                                                 style={{
                                                     borderColor:
                                                         'var(--border)',
@@ -822,89 +948,14 @@ export default function KeywordResearchForSEO() {
                                                 }}
                                             >
                                                 <CheckCircle2
-                                                    className="mt-0.5 h-4 w-4 shrink-0"
+                                                    className="h-5 w-5"
                                                     style={{
                                                         color:
                                                             'var(--accent)',
                                                     }}
                                                 />
-                                                <span className="text-sm">
-                                                    {item}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </section>
 
-                                {/* Why it matters */}
-                                <section
-                                    id="why-keyword-research-matters"
-                                    className="relative mt-20 scroll-mt-28"
-                                >
-                                    <SectionNumber number="02" />
-
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Why Is Keyword Research Important for
-                                        SEO?
-                                    </h2>
-
-                                    <div className="mt-6 space-y-5">
-                                        <p>
-                                            Without keyword research, you may
-                                            create content based entirely on
-                                            assumptions. You could write an
-                                            excellent article about a topic
-                                            almost nobody searches for or
-                                            target a highly competitive
-                                            keyword where your website has
-                                            little chance of competing.
-                                        </p>
-                                    </div>
-
-                                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                                        {[
-                                            [
-                                                '01',
-                                                'Find your audience',
-                                                'Understand the questions, problems, and topics your potential customers care about.',
-                                            ],
-                                            [
-                                                '02',
-                                                'Discover content ideas',
-                                                'Turn one seed keyword into dozens of relevant topics and content opportunities.',
-                                            ],
-                                            [
-                                                '03',
-                                                'Understand intent',
-                                                'Create pages that match what people actually want when they search.',
-                                            ],
-                                            [
-                                                '04',
-                                                'Find opportunities',
-                                                'Identify specific keywords where relevance and competition create a realistic opportunity.',
-                                            ],
-                                        ].map(([number, title, text]) => (
-                                            <div
-                                                key={number}
-                                                className="group rounded-2xl border p-6 transition-transform duration-300 hover:-translate-y-1"
-                                                style={{
-                                                    borderColor:
-                                                        'var(--border)',
-                                                    background:
-                                                        'var(--surface)',
-                                                }}
-                                            >
-                                                <span
-                                                    className="text-xs font-bold"
-                                                    style={{
-                                                        color:
-                                                            'var(--accent)',
-                                                    }}
-                                                >
-                                                    {number}
-                                                </span>
-
-                                                <h3 className="mt-3 text-lg font-bold">
+                                                <h3 className="mt-4 text-lg font-bold">
                                                     {title}
                                                 </h3>
 
@@ -922,21 +973,21 @@ export default function KeywordResearchForSEO() {
                                     </div>
                                 </section>
 
-                                {/* Research vs analysis */}
+                                {/* Keyword vs content gap */}
                                 <section
-                                    id="research-vs-analysis"
+                                    id="keyword-gap-vs-content-gap"
                                     className="relative mt-20 scroll-mt-28"
                                 >
                                     <SectionNumber number="03" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Keyword Research vs. Keyword Analysis
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Keyword Gap vs. Content Gap
                                     </h2>
 
                                     <p className="mt-6">
-                                        These terms are often used
-                                        interchangeably, but they describe
-                                        slightly different activities.
+                                        Keyword gap analysis and content gap
+                                        analysis are closely related, but they
+                                        aren't exactly the same.
                                     </p>
 
                                     <div className="mt-8 grid overflow-hidden rounded-2xl border sm:grid-cols-2">
@@ -956,11 +1007,11 @@ export default function KeywordResearchForSEO() {
                                                         'var(--accent)',
                                                 }}
                                             >
-                                                Research
+                                                Keyword Gap
                                             </p>
 
                                             <h3 className="mt-3 text-xl font-bold">
-                                                Discover possibilities
+                                                What keywords are missing?
                                             </h3>
 
                                             <p
@@ -970,9 +1021,9 @@ export default function KeywordResearchForSEO() {
                                                         'var(--text-muted)',
                                                 }}
                                             >
-                                                Find potential keywords,
-                                                questions, topics, competitors,
-                                                and search queries.
+                                                Focuses on the actual search
+                                                terms and rankings that differ
+                                                between websites.
                                             </p>
                                         </div>
 
@@ -990,11 +1041,11 @@ export default function KeywordResearchForSEO() {
                                                         'var(--accent)',
                                                 }}
                                             >
-                                                Analysis
+                                                Content Gap
                                             </p>
 
                                             <h3 className="mt-3 text-xl font-bold">
-                                                Evaluate opportunities
+                                                What topics are missing?
                                             </h3>
 
                                             <p
@@ -1004,38 +1055,39 @@ export default function KeywordResearchForSEO() {
                                                         'var(--text-muted)',
                                                 }}
                                             >
-                                                Evaluate volume, competition,
-                                                difficulty, intent, relevance,
-                                                and business value.
+                                                Focuses more broadly on topics,
+                                                questions, formats, and content
+                                                your audience may expect.
                                             </p>
                                         </div>
                                     </div>
                                 </section>
 
-                                {/* Process */}
+                                {/* How it works */}
                                 <section
-                                    id="keyword-research-process"
+                                    id="how-keyword-gap-works"
                                     className="relative mt-20 scroll-mt-28"
                                 >
                                     <SectionNumber number="04" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Step-by-Step: How to Do Keyword
-                                        Research for SEO
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        How Does Keyword Gap Analysis Work?
                                     </h2>
 
                                     <p className="mt-6">
-                                        Use this workflow to turn a broad topic
-                                        into a prioritized list of SEO
-                                        opportunities.
+                                        A practical{' '}
+                                        <strong>
+                                            competitor keyword analysis
+                                        </strong>{' '}
+                                        can be broken down into a simple
+                                        workflow.
                                     </p>
 
                                     <div className="mt-10 space-y-6">
-                                        {steps.map((step) => (
+                                        {processSteps.map((step) => (
                                             <div
                                                 key={step.number}
-                                                id={step.id}
-                                                className="relative scroll-mt-28 overflow-hidden rounded-2xl border"
+                                                className="overflow-hidden rounded-2xl border"
                                                 style={{
                                                     borderColor:
                                                         'var(--border)',
@@ -1077,7 +1129,9 @@ export default function KeywordResearchForSEO() {
                                                                     'var(--text-muted)',
                                                             }}
                                                         >
-                                                            {step.text}
+                                                            {
+                                                                step.description
+                                                            }
                                                         </p>
 
                                                         <div className="mt-5 flex flex-wrap gap-2">
@@ -1107,8 +1161,45 @@ export default function KeywordResearchForSEO() {
                                             </div>
                                         ))}
                                     </div>
+                                </section>
 
-                                    <KeywordDashboard />
+                                {/* Dashboard */}
+                                <section className="mt-20">
+                                    <GapDashboard />
+
+                                    <div
+                                        className="rounded-xl border p-5"
+                                        style={{
+                                            borderColor:
+                                                'var(--border)',
+                                            background:
+                                                'var(--surface-2)',
+                                        }}
+                                    >
+                                        <p
+                                            className="text-xs font-bold uppercase tracking-widest"
+                                            style={{
+                                                color:
+                                                    'var(--accent)',
+                                            }}
+                                        >
+                                            The opportunity
+                                        </p>
+
+                                        <p
+                                            className="mt-2 text-sm leading-relaxed"
+                                            style={{
+                                                color:
+                                                    'var(--text-secondary)',
+                                            }}
+                                        >
+                                            A useful keyword gap report
+                                            doesn't simply tell you what your
+                                            competitors rank for. It helps you
+                                            determine which of those keywords
+                                            are actually worth pursuing.
+                                        </p>
+                                    </div>
                                 </section>
 
                                 {/* Search intent */}
@@ -1118,15 +1209,16 @@ export default function KeywordResearchForSEO() {
                                 >
                                     <SectionNumber number="05" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Understand Search Intent
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Analyze Search Intent Before Targeting
+                                        a Keyword
                                     </h2>
 
                                     <p className="mt-6">
-                                        <strong>Search intent</strong> is the
-                                        reason behind a user's search. Before
-                                        targeting a keyword, ask what the
-                                        person is actually trying to accomplish.
+                                        Finding a competitor keyword is only
+                                        the beginning. Before creating content,
+                                        understand what the searcher actually
+                                        wants.
                                     </p>
 
                                     <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -1168,7 +1260,7 @@ export default function KeywordResearchForSEO() {
                                                 </div>
 
                                                 <p
-                                                    className="mt-3 text-sm"
+                                                    className="mt-3 text-sm leading-relaxed"
                                                     style={{
                                                         color:
                                                             'var(--text-muted)',
@@ -1181,207 +1273,138 @@ export default function KeywordResearchForSEO() {
                                     </div>
                                 </section>
 
-                                {/* Competitor research */}
-                                <section
-                                    id="competitor-research"
-                                    className="relative mt-20 scroll-mt-28"
-                                >
+                                {/* Prioritization */}
+                                <section className="relative mt-20">
                                     <SectionNumber number="06" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Analyze Your Competitors' Keywords
-                                    </h2>
-
-                                    <div className="mt-6 space-y-5">
-                                        <p>
-                                            Your competitors can be an
-                                            excellent source of keyword ideas.
-                                            Find websites that rank for topics
-                                            related to your business and
-                                            investigate which keywords they
-                                            target, what topics they cover,
-                                            and which questions they answer.
-                                        </p>
-
-                                        <p>
-                                            This process is often called{' '}
-                                            <strong>
-                                                competitor keyword research
-                                            </strong>{' '}
-                                            or{' '}
-                                            <strong>
-                                                competitor keyword analysis
-                                            </strong>
-                                            .
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        className="mt-8 rounded-2xl border p-6 sm:p-8"
-                                        style={{
-                                            borderColor: 'var(--border)',
-                                            background:
-                                                'var(--surface-2)',
-                                        }}
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <div
-                                                className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
-                                                style={{
-                                                    background:
-                                                        'var(--foreground)',
-                                                    color:
-                                                        'var(--background)',
-                                                }}
-                                            >
-                                                <TrendingUp className="h-5 w-5" />
-                                            </div>
-
-                                            <div>
-                                                <p
-                                                    className="text-xs font-bold uppercase tracking-widest"
-                                                    style={{
-                                                        color:
-                                                            'var(--accent)',
-                                                    }}
-                                                >
-                                                    Keyword gap opportunity
-                                                </p>
-
-                                                <h3 className="mt-2 text-xl font-bold">
-                                                    Find what competitors rank
-                                                    for that you don't.
-                                                </h3>
-
-                                                <p
-                                                    className="mt-3 text-sm leading-relaxed"
-                                                    style={{
-                                                        color:
-                                                            'var(--text-muted)',
-                                                    }}
-                                                >
-                                                    A keyword gap analysis can
-                                                    reveal opportunities for
-                                                    new blog posts, landing
-                                                    pages, supporting content,
-                                                    and topic clusters.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                {/* Keyword clustering */}
-                                <section
-                                    id="keyword-clustering"
-                                    className="relative mt-20 scroll-mt-28"
-                                >
-                                    <SectionNumber number="07" />
-
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Group Related Keywords
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        How to Prioritize Keyword Gaps
                                     </h2>
 
                                     <p className="mt-6">
-                                        Don't create a separate page for every
-                                        slight variation of a keyword. Instead,
-                                        group closely related keywords based on
-                                        their meaning and search intent.
+                                        You may discover hundreds or even
+                                        thousands of competitor keywords. The
+                                        challenge is deciding which ones
+                                        deserve your attention first.
                                     </p>
 
-                                    <div className="my-8 grid gap-3 sm:grid-cols-3">
+                                    <div className="mt-8 overflow-hidden rounded-2xl border">
+                                        <div
+                                            className="grid grid-cols-[1.3fr_1fr_1fr] border-b px-5 py-3 text-[10px] font-bold uppercase tracking-widest"
+                                            style={{
+                                                borderColor:
+                                                    'var(--border)',
+                                                background:
+                                                    'var(--surface-2)',
+                                                color:
+                                                    'var(--text-muted)',
+                                            }}
+                                        >
+                                            <span>Factor</span>
+                                            <span>Look for</span>
+                                            <span>Priority</span>
+                                        </div>
+
                                         {[
-                                            'keyword research',
-                                            'SEO keyword research',
-                                            'keyword research tool',
-                                            'keyword analysis',
-                                            'keyword clustering',
-                                            'keyword strategy',
-                                        ].map((keyword, index) => (
-                                            <div
-                                                key={keyword}
-                                                className="relative rounded-xl border p-4"
-                                                style={{
-                                                    borderColor:
-                                                        'var(--border)',
-                                                    background:
-                                                        'var(--surface)',
-                                                }}
-                                            >
-                                                <span
-                                                    className="absolute right-3 top-3 text-[10px] font-bold"
+                                            [
+                                                'Relevance',
+                                                'Strong topic fit',
+                                                'High',
+                                            ],
+                                            [
+                                                'Search intent',
+                                                'Matches your page',
+                                                'High',
+                                            ],
+                                            [
+                                                'Difficulty',
+                                                'Realistic competition',
+                                                'Medium',
+                                            ],
+                                            [
+                                                'Search volume',
+                                                'Meaningful demand',
+                                                'Medium',
+                                            ],
+                                            [
+                                                'Business value',
+                                                'Potential customers',
+                                                'High',
+                                            ],
+                                        ].map(
+                                            ([factor, lookFor, priority]) => (
+                                                <div
+                                                    key={factor}
+                                                    className="grid grid-cols-[1.3fr_1fr_1fr] border-b px-5 py-4 last:border-b-0"
                                                     style={{
-                                                        color:
-                                                            'var(--accent)',
+                                                        borderColor:
+                                                            'var(--border)',
                                                     }}
                                                 >
-                                                    {String(index + 1).padStart(
-                                                        2,
-                                                        '0'
-                                                    )}
-                                                </span>
+                                                    <span className="text-xs font-semibold">
+                                                        {factor}
+                                                    </span>
 
-                                                <Search
-                                                    className="h-4 w-4"
-                                                    style={{
-                                                        color:
-                                                            'var(--accent)',
-                                                    }}
-                                                />
+                                                    <span
+                                                        className="text-xs"
+                                                        style={{
+                                                            color:
+                                                                'var(--text-muted)',
+                                                        }}
+                                                    >
+                                                        {lookFor}
+                                                    </span>
 
-                                                <p className="mt-3 text-sm font-semibold">
-                                                    {keyword}
-                                                </p>
-                                            </div>
-                                        ))}
+                                                    <span
+                                                        className="text-xs font-semibold"
+                                                        style={{
+                                                            color:
+                                                                priority ===
+                                                                'High'
+                                                                    ? 'var(--accent)'
+                                                                    : 'var(--text-secondary)',
+                                                        }}
+                                                    >
+                                                        {priority}
+                                                    </span>
+                                                </div>
+                                            )
+                                        )}
                                     </div>
-
-                                    <p>
-                                        This process is known as{' '}
-                                        <strong>keyword clustering</strong> or{' '}
-                                        <strong>keyword grouping</strong>. It
-                                        helps you build organized content
-                                        around broader topics rather than
-                                        creating hundreds of thin pages.
-                                    </p>
                                 </section>
 
-                                {/* Mistakes */}
+                                {/* Common mistakes */}
                                 <section
                                     id="common-mistakes"
                                     className="relative mt-20 scroll-mt-28"
                                 >
-                                    <SectionNumber number="08" />
+                                    <SectionNumber number="07" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Common Keyword Research Mistakes
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Common Keyword Gap Analysis Mistakes
                                     </h2>
 
                                     <div className="mt-8 space-y-3">
                                         {[
                                             [
-                                                'Targeting only high-volume keywords',
-                                                "High search volume looks attractive, but it doesn't guarantee useful traffic.",
+                                                'Copying every competitor keyword',
+                                                'Not every keyword your competitors rank for is relevant to your business.',
                                             ],
                                             [
                                                 'Ignoring search intent',
-                                                'A keyword can be relevant to your industry but still have the wrong intent for your page.',
+                                                'A keyword gap is only useful when the intent matches the content you can provide.',
                                             ],
                                             [
-                                                'Keyword stuffing',
-                                                "Repeating a keyword unnaturally throughout an article doesn't make the page better.",
+                                                'Focusing only on search volume',
+                                                'High-volume keywords can be extremely competitive and may not generate valuable traffic.',
                                             ],
                                             [
-                                                'Creating one page for every variation',
-                                                'One strong resource can often be more useful than several thin pages targeting nearly identical intent.',
+                                                'Ignoring your existing rankings',
+                                                'Some of your biggest opportunities may be keywords where you already rank on page two or three.',
                                             ],
                                             [
-                                                'Ignoring competitors',
-                                                'Competitor keyword research can reveal topics and queries you may not have considered.',
-                                            ],
-                                            [
-                                                'Choosing keywords without considering your business',
-                                                'Traffic is not the only goal. Consider whether the visitor could become a customer.',
+                                                'Creating thin content',
+                                                'Finding a keyword gap does not mean you should publish low-value content just to target it.',
                                             ],
                                         ].map(([title, text], index) => (
                                             <div
@@ -1427,84 +1450,64 @@ export default function KeywordResearchForSEO() {
                                     </div>
                                 </section>
 
-                                {/* Final thoughts */}
+                                {/* SEO Miner */}
                                 <section
-                                    id="final-thoughts"
+                                    id="seo-miner"
                                     className="relative mt-20 scroll-mt-28"
                                 >
-                                    <SectionNumber number="09" />
+                                    <SectionNumber number="08" />
 
-                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-                                        Final Thoughts
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Find Keyword Gaps With SEO Miner
                                     </h2>
 
-                                    <div className="mt-6 space-y-5">
-                                        <p>
-                                            Effective keyword research isn't
-                                            about finding the keyword with the
-                                            biggest search volume and repeating
-                                            it throughout your website.
-                                        </p>
+                                    <p className="mt-6">
+                                        Manually comparing competitor
+                                        keywords can take hours. SEO Miner is
+                                        designed to make this process easier by
+                                        helping you discover keywords, analyze
+                                        competitors, identify gaps, and turn
+                                        those findings into actionable content
+                                        opportunities.
+                                    </p>
 
-                                        <p>
-                                            It's about understanding what
-                                            people search for, why they search
-                                            for it, how competitive the search
-                                            results are, and whether your
-                                            website can provide the best
-                                            answer.
-                                        </p>
-
-                                        <p>
-                                            A strong{' '}
-                                            <strong>
-                                                keyword research strategy
-                                            </strong>{' '}
-                                            combines keyword discovery, search
-                                            volume, keyword difficulty, search
-                                            intent, long-tail keywords,
-                                            competitor keyword research,
-                                            keyword gap analysis, keyword
-                                            clustering, content opportunities,
-                                            and business relevance.
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        className="mt-8 rounded-2xl border p-6 sm:p-8"
-                                        style={{
-                                            borderColor:
-                                                'var(--accent)',
-                                            background:
-                                                'var(--accent-light)',
-                                        }}
-                                    >
-                                        <p
-                                            className="text-2xl font-bold leading-tight sm:text-3xl"
-                                            style={{
-                                                fontFamily:
-                                                    'Instrument Serif, Georgia, serif',
-                                            }}
-                                        >
-                                            The goal isn't to rank for every
-                                            keyword.
-                                            <br />
-                                            <span
-                                                className="italic"
+                                    <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                                        {[
+                                            'Discover competitor keywords',
+                                            'Find missing keyword opportunities',
+                                            'Analyze keyword gaps',
+                                            'Identify content opportunities',
+                                            'Explore related keywords',
+                                            'Build a stronger SEO strategy',
+                                        ].map((item) => (
+                                            <div
+                                                key={item}
+                                                className="flex items-center gap-3 rounded-xl border p-4"
                                                 style={{
-                                                    color:
-                                                        'var(--accent)',
+                                                    borderColor:
+                                                        'var(--border)',
+                                                    background:
+                                                        'var(--surface)',
                                                 }}
                                             >
-                                                The goal is to rank for the
-                                                right keywords.
-                                            </span>
-                                        </p>
+                                                <CheckCircle2
+                                                    className="h-4 w-4 shrink-0"
+                                                    style={{
+                                                        color:
+                                                            'var(--accent)',
+                                                    }}
+                                                />
+
+                                                <span className="text-sm font-medium">
+                                                    {item}
+                                                </span>
+                                            </div>
+                                        ))}
                                     </div>
                                 </section>
 
                                 {/* CTA */}
-                                <section className="relative mt-20 overflow-hidden rounded-3xl border">
+                                <section className="relative mt-12 overflow-hidden rounded-3xl border">
                                     <div
                                         className="absolute inset-0 opacity-20"
                                         style={{
@@ -1534,7 +1537,7 @@ export default function KeywordResearchForSEO() {
                                                         'var(--accent)',
                                                 }}
                                             >
-                                                Ready to research?
+                                                Find your gaps
                                             </p>
 
                                             <h2
@@ -1544,8 +1547,8 @@ export default function KeywordResearchForSEO() {
                                                         'Instrument Serif, Georgia, serif',
                                                 }}
                                             >
-                                                Find the keywords your next
-                                                page should{' '}
+                                                Discover what your competitors
+                                                rank for —{' '}
                                                 <span
                                                     className="italic"
                                                     style={{
@@ -1553,7 +1556,7 @@ export default function KeywordResearchForSEO() {
                                                             'var(--accent)',
                                                     }}
                                                 >
-                                                    own.
+                                                    and you don't.
                                                 </span>
                                             </h2>
 
@@ -1564,10 +1567,9 @@ export default function KeywordResearchForSEO() {
                                                         'var(--text-muted)',
                                                 }}
                                             >
-                                                Extract keywords, discover
-                                                competitors, identify keyword
-                                                gaps, and turn your SEO research
-                                                into better content opportunities.
+                                                Turn competitor keyword research
+                                                into a clear list of SEO
+                                                opportunities.
                                             </p>
 
                                             <Link
@@ -1580,17 +1582,96 @@ export default function KeywordResearchForSEO() {
                                                         'var(--background)',
                                                 }}
                                             >
-                                                Try SEO Miner
+                                                Find Keyword Gaps
                                                 <ArrowUpRight className="h-4 w-4" />
                                             </Link>
                                         </div>
                                     </div>
                                 </section>
 
-                                {/* Related article */}
+                                {/* Final thoughts */}
+                                <section
+                                    id="final-thoughts"
+                                    className="relative mt-20 scroll-mt-28"
+                                >
+                                    <SectionNumber number="09" />
+
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Final Thoughts
+                                    </h2>
+
+                                    <div className="mt-6 space-y-5">
+                                        <p>
+                                            <strong>
+                                                Keyword gap analysis
+                                            </strong>{' '}
+                                            gives you a practical way to
+                                            understand what your competitors
+                                            are doing in organic search and
+                                            where your own website may have
+                                            opportunities.
+                                        </p>
+
+                                        <p>
+                                            The most valuable keyword gaps are
+                                            not necessarily the ones with the
+                                            highest search volume. Look for
+                                            keywords that are relevant to your
+                                            audience, match search intent, have
+                                            realistic competition, and can
+                                            contribute to your business goals.
+                                        </p>
+
+                                        <p>
+                                            Combine{' '}
+                                            <strong>
+                                                competitor keyword research
+                                            </strong>
+                                            , search intent, keyword
+                                            difficulty, search volume,
+                                            long-tail keywords, and content
+                                            analysis to build a more focused
+                                            SEO strategy.
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        className="mt-8 rounded-2xl border p-6 sm:p-8"
+                                        style={{
+                                            borderColor:
+                                                'var(--accent)',
+                                            background:
+                                                'var(--accent-light)',
+                                        }}
+                                    >
+                                        <p
+                                            className="text-2xl font-bold leading-tight sm:text-3xl"
+                                            style={{
+                                                fontFamily:
+                                                    'Instrument Serif, Georgia, serif',
+                                            }}
+                                        >
+                                            Your competitors have already
+                                            revealed opportunities.
+                                            <br />
+
+                                            <span
+                                                className="italic"
+                                                style={{
+                                                    color:
+                                                        'var(--accent)',
+                                                }}
+                                            >
+                                                Your job is to find them.
+                                            </span>
+                                        </p>
+                                    </div>
+                                </section>
+
+                                {/* Related */}
                                 <div className="mt-10">
                                     <Link
-                                        href="/blog"
+                                        href="/blog/keyword-research-for-seo"
                                         className="group flex items-center justify-between rounded-2xl border p-5 transition-all duration-200 hover:-translate-y-0.5"
                                         style={{
                                             borderColor: 'var(--border)',
@@ -1623,30 +1704,6 @@ export default function KeywordResearchForSEO() {
 
                 <Footer />
             </div>
-
-            <style jsx>{`
-                .prose-seo {
-                    color: var(--text-secondary);
-                    font-size: 17px;
-                    line-height: 1.85;
-                }
-
-                .prose-seo p {
-                    margin-top: 0;
-                    margin-bottom: 20px;
-                }
-
-                .prose-seo strong {
-                    color: var(--foreground);
-                    font-weight: 700;
-                }
-
-                @media (max-width: 640px) {
-                    .prose-seo {
-                        font-size: 16px;
-                    }
-                }
-            `}</style>
         </>
     );
 }
