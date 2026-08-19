@@ -18,6 +18,7 @@ import { motion } from 'framer-motion';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AdSlot from '@/components/AdSlot';
 
 const tocItems = [
     { id: 'what-is-keyword-research', label: 'What Is Keyword Research?' },
@@ -801,6 +802,9 @@ export default function KeywordResearchForSEO() {
                                         </div>
                                     </div>
                                 </div>
+                                
+                                            
+                                <AdSlot slot="7037737515" className="my-10" />
 
                                 {/* What is keyword research */}
                                 <section
@@ -1179,6 +1183,8 @@ export default function KeywordResearchForSEO() {
 
                                     <KeywordDashboard />
                                 </section>
+
+                                <AdSlot slot="5005741597" className="my-14" />
 
                                 {/* Search intent */}
                                 <section
@@ -1614,6 +1620,8 @@ export default function KeywordResearchForSEO() {
                                         </p>
                                     </div>
                                 </section>
+
+                                <AdSlot slot="7037737515" className="my-14" />
 
                                 {/* CTA */}
                                 <section className="relative mt-20 overflow-hidden rounded-3xl border">
