@@ -70,7 +70,6 @@ export default function Home() {
     const [gaps, setGaps] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [adLoaded, setAdLoaded] = useState(false);
     const [contentSuggestions, setContentSuggestions] = useState(null);
     const [competitorUrls, setCompetitorUrls] = useState(null);
     const [btnStatus, setBtnStatus] = useState('Mine Keywords');
@@ -81,18 +80,6 @@ export default function Home() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submissionStatus, setSubmissionStatus] = useState(null);
     const reportSectionRef = useRef(null);
-
-    const loadAdSenseScript = () => {
-        if (typeof window === 'undefined' || document.querySelector('#adsense-script')) return;
-        const script = document.createElement('script');
-        script.id = 'adsense-script';
-        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7347799068802683';
-        script.async = true;
-        script.crossOrigin = 'anonymous';
-        document.head.appendChild(script);
-        script.onload = () => setAdLoaded(true);
-        script.onerror = () => console.error('Failed to load AdSense script.');
-    };
 
     const handleGetKeywords = async () => {
         if (!url) {
@@ -246,15 +233,6 @@ export default function Home() {
     };
 
     useEffect(() => {
-        loadAdSenseScript();
-        return () => {
-            const script = document.querySelector('#adsense-script');
-            if (script) script.remove();
-            setAdLoaded(false);
-        };
-    }, []);
-
-    useEffect(() => {
         if (submissionStatus === 'success') {
             const timer = setTimeout(() => setSubmissionStatus(null), 3000);
             return () => clearTimeout(timer);
@@ -397,19 +375,6 @@ export default function Home() {
                         {error && (
                             <div className="mt-4 rounded-xl border p-4 text-sm font-medium" style={{ borderColor: '#fca5a5', background: '#fef2f2', color: '#dc2626' }}>
                                 {error}
-                            </div>
-                        )}
-
-                        {adLoaded && (
-                            <div className="my-4">
-                                <ins
-                                    className="adsbygoogle"
-                                    style={{ display: 'block' }}
-                                    data-ad-client="ca-pub-8393566924928419"
-                                    data-ad-slot="7861407634"
-                                    data-ad-format="auto"
-                                    data-full-width-responsive="true"
-                                />
                             </div>
                         )}
 
