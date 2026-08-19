@@ -12,6 +12,7 @@ import {
     Sparkles,
     Target,
     TrendingUp,
+    HelpCircle,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -32,6 +33,7 @@ const tocItems = [
     { id: 'competitor-research', label: 'Analyze Competitors' },
     { id: 'keyword-clustering', label: 'Group Related Keywords' },
     { id: 'common-mistakes', label: 'Common Mistakes' },
+    { id: 'faq-section', label: 'Frequently Asked Questions' },
     { id: 'final-thoughts', label: 'Final Thoughts' },
 ];
 
@@ -48,14 +50,14 @@ const steps = [
         number: '01',
         id: 'seed-keywords',
         title: 'Start With Seed Keywords',
-        text: `A seed keyword is a broad term that describes your business, product, service, or topic. For an SEO website, seed keywords could include SEO, keyword research, SEO tools, content marketing, technical SEO, and link building.`,
+        text: 'A seed keyword is a broad term that defines your niche or core topic pillars.To find seed keywords: 1) List your core products, services, and topic categories. 2) Study community forums(Reddit, Quora) and customer support tickets for natural phrasing. 3) Analyze competitor top- level navigation categories.For an SEO website, seed keywords include: SEO, keyword research, SEO tools, content marketing, and technical SEO.',
         items: ['SEO', 'keyword research', 'SEO tools', 'content marketing'],
     },
     {
         number: '02',
         id: 'expand-keywords',
         title: 'Expand Your Keyword List',
-        text: `Once you have your seed keywords, expand them into more specific search queries. Look for related keywords, question keywords, long-tail keywords, commercial keywords, informational keywords, comparison searches, and problem-based searches.`,
+        text: 'Once you have your seed keywords, expand them into more specific search queries.Look for related keywords, question keywords, long - tail keywords, commercial keywords, informational keywords, comparison searches, and problem - based searches.',
         items: [
             'Related keywords',
             'Question keywords',
@@ -67,21 +69,21 @@ const steps = [
         number: '03',
         id: 'search-volume',
         title: 'Check Search Volume',
-        text: `Search volume estimates how frequently a keyword is searched over a particular period. It can help you estimate demand, but search volume should never be the only factor you use when selecting a keyword.`,
+        text: 'Search volume estimates how frequently a keyword is searched over a particular period.It can help you estimate demand, but search volume should never be the only factor you use when selecting a keyword.',
         items: ['Demand', 'Relevance', 'Competition', 'Business value'],
     },
     {
         number: '04',
         id: 'keyword-difficulty',
         title: 'Analyze Keyword Difficulty',
-        text: `Keyword difficulty is an estimate of how difficult it may be to rank for a particular keyword. If the search results are dominated by large established websites, newer websites may want to prioritize more specific and less competitive keywords.`,
+        text: 'Keyword difficulty is an estimate of how difficult it may be to rank for a particular keyword.If the search results are dominated by large established websites, newer websites may want to prioritize more specific and less competitive keywords.',
         items: ['Competition', 'Domain authority', 'Existing results', 'Content quality'],
     },
     {
         number: '05',
         id: 'long-tail-keywords',
         title: 'Find Long-Tail Keywords',
-        text: `Long-tail keywords are generally more specific search phrases, often containing several words. They can reveal a clearer user need and help you discover highly targeted content opportunities.`,
+        text: 'Long - tail keywords are generally more specific search phrases, often containing several words.They can reveal a clearer user need and help you discover highly targeted content opportunities.',
         items: [
             'best keyword research tool for beginners',
             'how to find low competition keywords',
@@ -113,19 +115,25 @@ const intentCards = [
     },
 ];
 
-// function SectionNumber({ number }) {
-//     return (
-//         <div
-//             className="pointer-events-none absolute -left-3 -top-10 select-none text-7xl font-bold leading-none sm:-left-6 sm:text-8xl"
-//             style={{
-//                 color: 'var(--accent)',
-//                 opacity: 0.07,
-//             }}
-//         >
-//             {number}
-//         </div>
-//     );
-// }
+const faqData = [
+    {
+        question: 'What are seed keywords in keyword research?',
+        answer: 'Seed keywords are broad terms that represent your industry or business offerings. They act as the foundational starting point to discover longer-tail search terms and question queries.',
+    },
+    {
+        question: 'How do you analyze keyword difficulty for SEO?',
+        answer: 'Evaluate keyword difficulty by inspecting the top 10 Google search results for your target keyword. Look at domain authority, backlink quality, search intent match, and content depth of existing ranking pages.',
+    },
+    {
+        question: 'What is the difference between keyword research and keyword analysis?',
+        answer: 'Keyword research is the initial discovery phase of finding search terms. Keyword analysis is the evaluation phase where you assess intent, volume, difficulty, SERP features, and business value before creating content.',
+    },
+    {
+        question: 'How long does it take for keyword research to show results?',
+        answer: 'For a new site, targeted long-tail keywords usually start gaining search impressions within 2–4 weeks. Moving into top ranking positions (Page 1) typically takes 3 to 6 months depending on competition and domain authority.',
+    },
+];
+
 function SectionNumber({ number }) {
     return (
         <div
@@ -152,7 +160,6 @@ function SectionNumber({ number }) {
     );
 }
 
-
 function KeywordGraphic() {
     return (
         <div
@@ -164,7 +171,7 @@ function KeywordGraphic() {
                 boxShadow: 'var(--shadow-xl)',
             }}
         >
-            <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
+
 
             <div
                 className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
@@ -272,6 +279,8 @@ function KeywordGraphic() {
             </div>
         </div>
     );
+
+
 }
 
 function KeywordDashboard() {
@@ -287,6 +296,7 @@ function KeywordDashboard() {
                 className="flex items-center justify-between border-b px-5 py-4"
                 style={{ borderColor: 'var(--border)' }}
             >
+
                 <div className="flex items-center gap-3">
                     <div
                         className="grid h-9 w-9 place-items-center rounded-lg"
@@ -417,6 +427,8 @@ function KeywordDashboard() {
             </div>
         </div>
     );
+
+
 }
 
 export default function KeywordResearchForSEO() {
@@ -456,12 +468,37 @@ export default function KeywordResearchForSEO() {
         return () => observer.disconnect();
     }, []);
 
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'How to Do Keyword Research for SEO (2026 Step-by-Step Guide)',
+        description:
+            'Learn how to do keyword research for SEO, find seed keywords, analyze search intent, evaluate keyword difficulty, research competitors, and build an effective keyword strategy.',
+        url: 'https://seominer.vercel.app/blog/keyword-research-for-seo',
+        publisher: {
+            '@type': 'Organization',
+            name: 'SEO Miner',
+        },
+    };
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqData.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    };
+
     return (
         <>
             <Head>
                 <title>
-                    How to Do Keyword Research for SEO: A Complete Guide |
-                    SEO Miner
+                    How to Do Keyword Research for SEO (2026 Step-by-Step Guide) | SEO Miner
                 </title>
 
                 <meta
@@ -481,7 +518,7 @@ export default function KeywordResearchForSEO() {
 
                 <meta
                     property="og:title"
-                    content="How to Do Keyword Research for SEO: A Complete Guide"
+                    content="How to Do Keyword Research for SEO (2026 Step-by-Step Guide)"
                 />
 
                 <meta
@@ -490,6 +527,19 @@ export default function KeywordResearchForSEO() {
                 />
 
                 <meta property="og:type" content="article" />
+
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(articleSchema),
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(faqSchema),
+                    }}
+                />
             </Head>
 
             <div
@@ -553,7 +603,7 @@ export default function KeywordResearchForSEO() {
                                         }}
                                     >
                                         <Clock className="h-3.5 w-3.5" />
-                                        10 min read
+                                        12 min read
                                     </span>
 
                                     <span
@@ -648,17 +698,17 @@ export default function KeywordResearchForSEO() {
                                                     marginLeft: '-18px',
                                                     borderColor:
                                                         activeSection ===
-                                                        item.id
+                                                            item.id
                                                             ? 'var(--accent)'
                                                             : 'transparent',
                                                     color:
                                                         activeSection ===
-                                                        item.id
+                                                            item.id
                                                             ? 'var(--foreground)'
                                                             : 'var(--text-muted)',
                                                     fontWeight:
                                                         activeSection ===
-                                                        item.id
+                                                            item.id
                                                             ? 600
                                                             : 400,
                                                 }}
@@ -934,10 +984,29 @@ export default function KeywordResearchForSEO() {
                                     </h2>
 
                                     <p className="mt-6">
-                                        These terms are often used
-                                        interchangeably, but they describe
-                                        slightly different activities.
+                                        While <strong>keyword research</strong> is about discovering potential search terms, <strong>keyword analysis</strong> is the process of evaluating those terms against key metrics before writing:
                                     </p>
+
+                                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                                        {[
+                                            ['Search Intent Alignment', 'Determine whether searchers expect an informational article, comparison chart, or tool.'],
+                                            ['Difficulty vs Authority', 'Compare SERP backlink counts against your website authority before targeting.'],
+                                            ['Business Conversion Value', 'Prioritize keywords that bring active leads, not just passive traffic.'],
+                                            ['SERP Feature Layout', 'Check if search results are dominated by ads, video carousels, or AI Overviews.'],
+                                        ].map(([title, desc]) => (
+                                            <div
+                                                key={title}
+                                                className="rounded-xl border p-4"
+                                                style={{
+                                                    borderColor: 'var(--border)',
+                                                    background: 'var(--surface)',
+                                                }}
+                                            >
+                                                <p className="text-sm font-bold">{title}</p>
+                                                <p className="mt-1 text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>{desc}</p>
+                                            </div>
+                                        ))}
+                                    </div>
 
                                     <div className="mt-8 grid overflow-hidden rounded-2xl border sm:grid-cols-2">
                                         <div
@@ -1427,12 +1496,55 @@ export default function KeywordResearchForSEO() {
                                     </div>
                                 </section>
 
+                                {/* FAQ Section */}
+                                <section
+                                    id="faq-section"
+                                    className="relative mt-20 scroll-mt-28"
+                                >
+                                    <SectionNumber number="09" />
+
+                                    <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Frequently Asked Questions
+                                    </h2>
+
+                                    <div className="mt-8 space-y-4">
+                                        {faqData.map((faq) => (
+                                            <div
+                                                key={faq.question}
+                                                className="rounded-2xl border p-6"
+                                                style={{
+                                                    borderColor: 'var(--border)',
+                                                    background: 'var(--surface)',
+                                                }}
+                                            >
+                                                <div className="flex items-start gap-3">
+                                                    <HelpCircle
+                                                        className="mt-0.5 h-5 w-5 shrink-0"
+                                                        style={{ color: 'var(--accent)' }}
+                                                    />
+                                                    <div>
+                                                        <h3 className="text-lg font-bold">
+                                                            {faq.question}
+                                                        </h3>
+                                                        <p
+                                                            className="mt-2 text-sm leading-relaxed"
+                                                            style={{ color: 'var(--text-muted)' }}
+                                                        >
+                                                            {faq.answer}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
                                 {/* Final thoughts */}
                                 <section
                                     id="final-thoughts"
                                     className="relative mt-20 scroll-mt-28"
                                 >
-                                    <SectionNumber number="09" />
+                                    <SectionNumber number="10" />
 
                                     <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
                                         Final Thoughts
@@ -1625,28 +1737,30 @@ export default function KeywordResearchForSEO() {
             </div>
 
             <style jsx>{`
+            .prose-seo {
+                color: var(--text-secondary);
+                font-size: 17px;
+                line-height: 1.85;
+            }
+
+            .prose-seo p {
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+
+            .prose-seo strong {
+                color: var(--foreground);
+                font-weight: 700;
+            }
+
+            @media (max-width: 640px) {
                 .prose-seo {
-                    color: var(--text-secondary);
-                    font-size: 17px;
-                    line-height: 1.85;
+                    font-size: 16px;
                 }
-
-                .prose-seo p {
-                    margin-top: 0;
-                    margin-bottom: 20px;
-                }
-
-                .prose-seo strong {
-                    color: var(--foreground);
-                    font-weight: 700;
-                }
-
-                @media (max-width: 640px) {
-                    .prose-seo {
-                        font-size: 16px;
-                    }
-                }
-            `}</style>
+            }
+        `}</style>
         </>
     );
+
+
 }

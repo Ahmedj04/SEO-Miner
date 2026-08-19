@@ -14,7 +14,7 @@ const posts = [
         title: 'How to Do Keyword Research for SEO: A Complete Guide',
         description:
             'Learn how to do keyword research for SEO, find long-tail keywords, analyze search intent, evaluate keyword difficulty, research competitors, and build an effective keyword strategy.',
-        readTime: '10 min read',
+        readTime: '12 min read',
         date: 'August 2026',
     },
     {
