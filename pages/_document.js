@@ -6,6 +6,33 @@ export default function Document() {
     <Html lang="en">
       {/* <Head /> */}
       <Head>
+        {/* Sitewide Organization + WebSite structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'SEO Miner',
+              url: 'https://seominer.vercel.app',
+              description:
+                'SEO Miner is a free SEO research workspace for extracting keywords from public pages, comparing competitor language, finding keyword gaps, and turning research into draft content.',
+              sameAs: [],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'SEO Miner',
+              url: 'https://seominer.vercel.app',
+            }),
+          }}
+        />
+
         {/* Global Site Tag (gtag.js) - Google Analytics */}
         <Script
           strategy="afterInteractive"

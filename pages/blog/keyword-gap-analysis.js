@@ -8,6 +8,7 @@ import {
     CheckCircle2,
     ChevronRight,
     Clock,
+    HelpCircle,
     Search,
     Sparkles,
     Target,
@@ -32,7 +33,27 @@ const tocItems = [
     { id: 'prioritize-gaps', label: 'Prioritize Keyword Gaps' },
     { id: 'common-mistakes', label: 'Common Mistakes' },
     { id: 'seo-miner', label: 'Find Keyword Gaps With SEO Miner' },
+    { id: 'faq-section', label: 'Frequently Asked Questions' },
     { id: 'final-thoughts', label: 'Final Thoughts' },
+];
+
+const faqData = [
+    {
+        question: 'What is keyword gap analysis in SEO?',
+        answer: 'Keyword gap analysis is the process of comparing the keywords your website ranks for against the keywords your competitors rank for, in order to identify relevant search terms you are currently missing.',
+    },
+    {
+        question: 'How do I find keyword gaps between my site and a competitor?',
+        answer: 'Identify your top organic competitors, gather the keywords they rank for, and compare that list against your own keyword profile. Keywords they rank for that you do not are your keyword gaps.',
+    },
+    {
+        question: 'Is keyword gap analysis the same as competitor analysis?',
+        answer: 'They are related but not identical. Competitor analysis looks broadly at a competitor\'s strategy, while keyword gap analysis focuses specifically on comparing keyword rankings to find missing opportunities.',
+    },
+    {
+        question: 'How often should I run a keyword gap analysis?',
+        answer: 'Many SEO teams review keyword gaps quarterly, since competitor rankings and search trends change over time. Newer or fast-moving markets may benefit from more frequent checks.',
+    },
 ];
 
 const keywordChips = [
@@ -546,6 +567,58 @@ export default function KeywordGapAnalysis() {
                 />
 
                 <meta property="og:type" content="article" />
+
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'Article',
+                            headline:
+                                'What Is Keyword Gap Analysis? How to Find Keywords Your Competitors Rank For',
+                            description:
+                                'Learn what keyword gap analysis is and how to find keywords your competitors rank for.',
+                            url: 'https://seominer.vercel.app/blog/keyword-gap-analysis',
+                            datePublished: '2026-08-13',
+                            dateModified: '2026-08-13',
+                            author: { '@type': 'Organization', name: 'SEO Miner' },
+                            publisher: { '@type': 'Organization', name: 'SEO Miner' },
+                            mainEntityOfPage:
+                                'https://seominer.vercel.app/blog/keyword-gap-analysis',
+                        }),
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'BreadcrumbList',
+                            itemListElement: [
+                                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seominer.vercel.app' },
+                                { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://seominer.vercel.app/blog' },
+                                { '@type': 'ListItem', position: 3, name: 'Keyword Gap Analysis', item: 'https://seominer.vercel.app/blog/keyword-gap-analysis' },
+                            ],
+                        }),
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'FAQPage',
+                            mainEntity: faqData.map((faq) => ({
+                                '@type': 'Question',
+                                name: faq.question,
+                                acceptedAnswer: {
+                                    '@type': 'Answer',
+                                    text: faq.answer,
+                                },
+                            })),
+                        }),
+                    }}
+                />
             </Head>
 
             <div
@@ -1589,12 +1662,55 @@ export default function KeywordGapAnalysis() {
                                     </div>
                                 </section>
 
+                                {/* FAQ */}
+                                <section
+                                    id="faq-section"
+                                    className="relative mt-20 scroll-mt-28"
+                                >
+                                    <SectionNumber number="09" />
+
+                                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                                        Frequently Asked Questions
+                                    </h2>
+
+                                    <div className="mt-8 space-y-4">
+                                        {faqData.map((faq) => (
+                                            <div
+                                                key={faq.question}
+                                                className="rounded-2xl border p-6"
+                                                style={{
+                                                    borderColor: 'var(--border)',
+                                                    background: 'var(--surface)',
+                                                }}
+                                            >
+                                                <div className="flex items-start gap-3">
+                                                    <HelpCircle
+                                                        className="mt-0.5 h-5 w-5 shrink-0"
+                                                        style={{ color: 'var(--accent)' }}
+                                                    />
+                                                    <div>
+                                                        <h3 className="text-lg font-bold">
+                                                            {faq.question}
+                                                        </h3>
+                                                        <p
+                                                            className="mt-2 text-sm leading-relaxed"
+                                                            style={{ color: 'var(--text-muted)' }}
+                                                        >
+                                                            {faq.answer}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
                                 {/* Final thoughts */}
                                 <section
                                     id="final-thoughts"
                                     className="relative mt-20 scroll-mt-28"
                                 >
-                                    <SectionNumber number="09" />
+                                    <SectionNumber number="10" />
 
                                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                                         Final Thoughts

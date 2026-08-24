@@ -476,10 +476,17 @@ export default function KeywordResearchForSEO() {
         description:
             'Learn how to do keyword research for SEO, find seed keywords, analyze search intent, evaluate keyword difficulty, research competitors, and build an effective keyword strategy.',
         url: 'https://seominer.vercel.app/blog/keyword-research-for-seo',
+        datePublished: '2026-08-13',
+        dateModified: '2026-08-13',
+        author: {
+            '@type': 'Organization',
+            name: 'SEO Miner',
+        },
         publisher: {
             '@type': 'Organization',
             name: 'SEO Miner',
         },
+        mainEntityOfPage: 'https://seominer.vercel.app/blog/keyword-research-for-seo',
     };
 
     const faqSchema = {
@@ -493,6 +500,16 @@ export default function KeywordResearchForSEO() {
                 text: faq.answer,
             },
         })),
+    };
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seominer.vercel.app' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://seominer.vercel.app/blog' },
+            { '@type': 'ListItem', position: 3, name: 'Keyword Research for SEO', item: 'https://seominer.vercel.app/blog/keyword-research-for-seo' },
+        ],
     };
 
     return (
@@ -539,6 +556,12 @@ export default function KeywordResearchForSEO() {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify(faqSchema),
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(breadcrumbSchema),
                     }}
                 />
             </Head>

@@ -19,11 +19,30 @@ import {
     Users,
     Zap,
 } from 'lucide-react';
+import Link from 'next/link';
 import { extractKeywords } from '@/utils/keywordUtils';
 import { getCompetitorsUrls } from '@/utils/seoUtils';
 import axios from 'axios';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+const blogPosts = [
+    {
+        slug: 'keyword-research-for-seo',
+        title: 'How to Do Keyword Research for SEO',
+        description: 'A step-by-step guide to finding valuable keywords and understanding search intent.',
+    },
+    {
+        slug: 'low-competition-keywords',
+        title: 'How to Find Low-Competition Keywords',
+        description: 'Discover realistic ranking opportunities instead of chasing the biggest keywords.',
+    },
+    {
+        slug: 'keyword-gap-analysis',
+        title: 'What Is Keyword Gap Analysis?',
+        description: 'Find the keywords your competitors rank for that your site is still missing.',
+    },
+];
 
 const featureCards = [
     {
@@ -592,6 +611,41 @@ export default function Home() {
                             >
                                 <h3 className="font-semibold" style={{ color: 'var(--foreground)' }}>{question}</h3>
                                 <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{answer}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* From the blog */}
+                <section id="blog-highlights" className="mx-auto max-w-7xl py-20">
+                    <SectionHeading
+                        eyebrow="From the blog"
+                        title="SEO guides to go deeper"
+                        description="Practical guides on keyword research, competitor analysis, and finding realistic ranking opportunities."
+                    />
+                    <div className="mt-10 grid gap-4 md:grid-cols-3">
+                        {blogPosts.map(({ slug, title, description }, i) => (
+                            <motion.div
+                                key={slug}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08, duration: 0.5 }}
+                            >
+                                <Link
+                                    href={`/blog/${slug}`}
+                                    className="group block h-full rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1"
+                                    style={{ borderColor: 'var(--border)', background: 'var(--surface)', boxShadow: 'var(--shadow-sm)' }}
+                                >
+                                    <h3 className="text-base font-semibold transition-colors duration-200 group-hover:text-[var(--accent)]" style={{ color: 'var(--foreground)' }}>
+                                        {title}
+                                    </h3>
+                                    <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{description}</p>
+                                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                                        Read guide
+                                        <ArrowUpRight className="h-3.5 w-3.5" />
+                                    </span>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>
