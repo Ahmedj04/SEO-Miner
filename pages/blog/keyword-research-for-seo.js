@@ -1644,7 +1644,7 @@ export default function KeywordResearchForSEO() {
                                     </div>
                                 </section>
 
-                                <AdSlot slot="7037737515" className="my-14" />
+                                {/* <AdSlot slot="7037737515" className="my-14" /> */}
 
                                 {/* CTA */}
                                 <section className="relative mt-20 overflow-hidden rounded-3xl border">

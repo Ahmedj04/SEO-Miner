@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function AdSlot({ slot, className = "" }) {
   const adRef = useRef(null);
+  const isPushed = useRef(false);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -13,20 +14,25 @@ export default function AdSlot({ slot, className = "" }) {
     };
 
     const observer = new MutationObserver(updateVisibility);
-
     observer.observe(ad, {
       attributes: true,
       attributeFilter: ["data-ad-status"],
     });
 
-    try {
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
-    } catch {
-      // Ignore AdSense errors.
+    if (!isPushed.current && !ad.getAttribute("data-adsbygoogle-status")) {
+      isPushed.current = true;
+      try {
+        if (typeof window !== "undefined") {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (err) {
+        console.warn("AdSense push error:", err);
+      }
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, [slot]);
 
   return (
