@@ -2,8 +2,7 @@ import { ChatGroq } from "@langchain/groq";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import Bottleneck from "bottleneck";
 
-// export const GROQ_FAST_MODEL = "llama-3.3-70b-versatile";
-export const GROQ_FAST_MODEL = "llama-3.1-8b-instant";
+export const GROQ_FAST_MODEL = "openai/gpt-oss-20b";
 export const GROQ_SMART_MODEL = "groq/compound-mini";
 export const GROQ_TEMPERATURE =  0.2;
 
