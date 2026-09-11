@@ -38,8 +38,8 @@ export async function getKeywords(url) {
         const relevantContent = extractRelevantContent(response.data);
         const prompt = `Extract SEO keywords from this webpage:\n${relevantContent}`;
 
-        // const responseText = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction, format: 'json'});
-        const responseText = await groqCall({ modelName: GROQ_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction});
+        const responseText = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction, format: 'json'});
+        // const responseText = await groqCall({ modelName: GROQ_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction});
         
         const keywords = extractJson(responseText);
         return keywords; 

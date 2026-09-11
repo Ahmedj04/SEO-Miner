@@ -1,8 +1,10 @@
 import { ChatOllama } from "@langchain/ollama";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-export const OLLAMA_FAST_MODEL = "gpt-oss:20b";
-export const OLLAMA_SMART_MODEL = "nemotron-3-super";
+// export const OLLAMA_FAST_MODEL = "gpt-oss:20b";
+export const OLLAMA_FAST_MODEL = "gemma4:31b";
+// export const OLLAMA_SMART_MODEL = "nemotron-3-super";
+export const OLLAMA_SMART_MODEL = "nemotron-3-ultra";
 export const OLLAMA_TEMPERATURE = 0.2;
 
 function createAuthenticatedFetch() {
