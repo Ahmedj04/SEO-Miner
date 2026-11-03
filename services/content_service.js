@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { extractRelevantContent, extractJson } from '../utils/parserUtils';
-import { ollamaCall, OLLAMA_FAST_MODEL, OLLAMA_SMART_MODEL, geminiCall , GEMINI_FAST_MODEL, groqCall, GROQ_FAST_MODEL, GROQ_SMART_MODEL } from '../llm';
+import { ollamaCall, OLLAMA_FAST_MODEL, OLLAMA_SMART_MODEL, geminiCall , GEMINI_FAST_MODEL, groqCall, GROQ_FAST_MODEL } from '../llm';
 
 export async function getKeywords(url) {
     const getKeySystemInstruction = `
@@ -38,8 +38,8 @@ export async function getKeywords(url) {
         const relevantContent = extractRelevantContent(response.data);
         const prompt = `Extract SEO keywords from this webpage:\n${relevantContent}`;
 
-        const responseText = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction, format: 'json'});
-        // const responseText = await groqCall({ modelName: GROQ_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction});
+        // const responseText = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction, format: 'json'});
+        const responseText = await groqCall({ modelName: GROQ_FAST_MODEL, prompt , systemInstruction: getKeySystemInstruction});
         
         const keywords = extractJson(responseText);
         return keywords; 
@@ -77,9 +77,9 @@ export async function getCompetitors(url){
     `;
     
     try{
-        // const response = await ollamaCall({ modelName: OLLAMA_SMART_MODEL, prompt, format: 'json' });
+        const response = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt, format: 'json' });
         // const response = await geminiCall({ modelName: GEMINI_FAST_MODEL, prompt});
-        const response = await groqCall({ modelName: GROQ_SMART_MODEL, prompt});
+        // const response = await groqCall({ modelName: GROQ_FAST_MODEL, prompt});
 
         const competitorsUrls = extractJson(response);
         return competitorsUrls; // Return the extracted URLs in the response.
