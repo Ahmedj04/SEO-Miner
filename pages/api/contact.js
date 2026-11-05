@@ -3,9 +3,9 @@ import nodemailer from 'nodemailer';
 
 // Validation schema for the contact form
 const contactFormValidationRules = [
-    check('name').notEmpty().trim().escape().withMessage('Name is required'),
+    check('name').trim().notEmpty().withMessage('Name is required'),
     check('email').isEmail().normalizeEmail().withMessage('Invalid email address'),
-    check('message').notEmpty().trim().escape().withMessage('Message is required'),
+    check('message').trim().notEmpty().withMessage('Message is required'),
 ];
 
 /**
@@ -45,8 +45,8 @@ const contactHandler = async (req, res) => {
             to: process.env.EMAIL_USER,
             replyTo: email,
             subject: 'New Contact Form Submission On SEO Miner.',
+            // Keep user input as plain text; HTML escaping would appear literally in this body.
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-            // html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
           };
           
 
