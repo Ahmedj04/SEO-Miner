@@ -7,31 +7,20 @@ export const OLLAMA_FAST_MODEL = "gemma4:31b";
 export const OLLAMA_SMART_MODEL = "nemotron-3-ultra";
 export const OLLAMA_TEMPERATURE = 0.2;
 
-function createAuthenticatedFetch() {
-  const apiKey = process.env.OLLAMA_API_KEY;
-  if (!apiKey) throw new Error("OLLAMA_API_KEY is required.");
-
-  // Return a fetch wrapper that injects the Authorization header
-  return (url, options = {}) => {
-    return fetch(url, {
-      ...options,
-      headers: {
-        ...options.headers,
-        Authorization: `Bearer ${apiKey}`,
-      },
-    });
-  };
-}
 
 function createClient(modelName, format) {
   if (!process.env.OLLAMA_HOST) throw new Error("OLLAMA_HOST is required.");
-
+  if (!process.env.OLLAMA_API_KEY) throw new Error("OLLAMA_API_KEY is required.");
+  
   return new ChatOllama({
     baseUrl: process.env.OLLAMA_HOST.replace(/\/$/, ""),
     model: modelName,
+    think: true,
     temperature: OLLAMA_TEMPERATURE,
+    headers: {
+      Authorization: `Bearer ${process.env.OLLAMA_API_KEY}`,
+    },
     ...(format === "json" ? { format: "json" } : {}),
-    fetch: createAuthenticatedFetch(),
   });
 }
 
