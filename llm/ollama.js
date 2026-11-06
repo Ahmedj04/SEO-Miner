@@ -8,7 +8,7 @@ export const OLLAMA_SMART_MODEL = "nemotron-3-ultra";
 export const OLLAMA_TEMPERATURE = 0.2;
 
 
-function createClient(modelName, format) {
+export function createClient(modelName, format) {
   if (!process.env.OLLAMA_HOST) throw new Error("OLLAMA_HOST is required.");
   if (!process.env.OLLAMA_API_KEY) throw new Error("OLLAMA_API_KEY is required.");
   
