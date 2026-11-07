@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { extractRelevantContent, extractJson } from '../utils/parserUtils';
-import { ollamaCall, OLLAMA_FAST_MODEL, OLLAMA_SMART_MODEL, geminiCall , GEMINI_FAST_MODEL, groqCall, GROQ_FAST_MODEL } from '../llm';
+import { ollamaCall, OLLAMA_FAST_MODEL, groqCall, GROQ_FAST_MODEL } from '../llm';
+import { getCompetitorsFromAgent } from '../llm/agents/competitor-agent.js';
 
 export async function getKeywords(url) {
     const getKeySystemInstruction = `
@@ -51,73 +52,13 @@ export async function getKeywords(url) {
     }   
 }
 
-// export async function getCompetitors(url){
-//     const prompt = `
-//         You are an expert market analyst.
-
-//         Analyze the website: ${url}
-
-//         Identify DIRECT competitors (same product/service and target audience).
-
-//         Return STRICT JSON only in this exact format:
-//         {
-//             "competitorUrls": [
-//                 "https://example1.com",
-//                 "https://example2.com",
-//                 "https://example3.com"
-//             ]
-//         }
-
-//         Rules:
-//         - Maximum 3 competitors
-//         - Only real, well-known competitors
-//         - URLs must be valid homepage URLs (include https://)
-//         - No explanations, no extra text, no markdown
-//         - Do not include anything except the JSON object
-//     `;
-    
-//     try{
-//         const response = await ollamaCall({ modelName: OLLAMA_FAST_MODEL, prompt, format: 'json' });
-//         // const response = await geminiCall({ modelName: GEMINI_FAST_MODEL, prompt});
-//         // const response = await groqCall({ modelName: GROQ_FAST_MODEL, prompt});
-
-//         const competitorsUrls = extractJson(response);
-//         return competitorsUrls; // Return the extracted URLs in the response.
-       
-//     } catch (error){
-//         // return 'Error during content generation:', error;
-//         throw new Error('Error while fetching competitors url', { cause: error }) ; 
-//     }
-// }
-
-
-import { competitorAgent } from "../llm/agents/competitor-agent.js";
-
 export async function getCompetitors(url) {
-  try {
-    const response = await competitorAgent.invoke({
-      messages: [
-        {
-          role: "user",
-          content: `Find the direct competitors of ${url}`,
-        },
-      ],
-    });
-
-    const content = response.messages.at(-1).content;
-
-    return extractJson(
-      typeof content === "string"
-        ? content
-        : JSON.stringify(content)
-    );
-
-  } catch (error) {
-    throw new Error(
-      "Error while fetching competitors",
-      { cause: error }
-    );
-  }
+    try {
+        const response = await getCompetitorsFromAgent(url);
+        return extractJson(response);
+    } catch (error) {
+        throw new Error("Error while fetching competitors", { cause: error });
+    }
 }
 
 export const generateContentSuggestions = async (metadata, gapKeywords) => {

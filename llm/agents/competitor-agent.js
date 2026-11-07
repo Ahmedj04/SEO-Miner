@@ -53,3 +53,17 @@ export const competitorAgent = createAgent({
   tools: [ webSearch, fetchWebsite ],
   systemPrompt,
 });
+
+export const getCompetitorsFromAgent = async (url) => {
+  const prompt = `Find the direct competitors of ${url}`;
+  try {
+    const { messages } = await competitorAgent.invoke({
+    messages: [{ role: 'user', content: prompt }],
+    });
+    const content = messages.at(-1).content;
+    return typeof content === 'string' ? content : JSON.stringify(content);
+  } catch (error) {
+    throw new Error('Error while fetching competitors');
+  }
+  
+};
