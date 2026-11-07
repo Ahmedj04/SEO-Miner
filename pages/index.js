@@ -22,7 +22,7 @@ import {
 import Link from 'next/link';
 import { extractKeywords } from '@/utils/keywordUtils';
 import { getCompetitorsUrls } from '@/utils/seoUtils';
-import axios from 'axios';
+import { fetchHtml } from '@/utils/fetchUtils';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -119,7 +119,8 @@ export default function Home() {
             if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
                 formattedUrl = 'https://' + formattedUrl;
             }
-            const metadataResponse = await axios.get(`/api/getPageMetadata?url=${encodeURIComponent(formattedUrl)}`);
+
+            const metadataResponse = await fetchHtml(formattedUrl);
             if (metadataResponse.status !== 200) return;
 
             setBtnStatus('Extracting Keywords...');
@@ -131,7 +132,7 @@ export default function Home() {
             setBtnStatus('Extracting Keywords...');
             const topPageKeywords = await Promise.all(
                 topPageUrls.map(async (pageUrl) => {
-                    const res = await fetch(`/api/getPageMetadata?url=${encodeURIComponent(pageUrl)}`);
+                    const res = await fetchHtml(pageUrl);
                     if (res.status === 200) {
                         const competitorKeywords = await extractKeywords(pageUrl);
                         return competitorKeywords.keywords ? competitorKeywords : { keywords: [], topKeyword: '' };
